@@ -2,4 +2,5 @@
 2.responseText返回来的数据是JSON字符串
 3.responseXML返回来的数据是XML形式的数据
 4.把数据输出到HTML页面的那句话要写在AJAX判断里边，循环之外
-5.页面通过服务器app.js文件里边的/data接口访问到data.js文件（这是个路由文件），然后在通过data.js文件里边的/huoqu接口访问到其中对应的路由，从而达到获取数据的目的。
+5.页面通过服务器app.js文件里边的/luyou接口访问到luyou.js文件（这是个路由文件），然后在通过luyou.js文件里边的/huoqu接口访问到其中对应的路由，从而达到获取数据的目的。
+6.关于origin ‘null’ has been blocked by CORS policy跨域问题解决方法:有可能是浏览器缓存问题，换个浏览器试试。
