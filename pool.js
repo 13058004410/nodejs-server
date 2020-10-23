@@ -10,9 +10,9 @@ var pool=mysql.createPool({
 	connectionLimit:20
 });
 
-pool.query('select*from news',function(err,result){
-	if(err)throw err;
-	// console.log(result);
-});
+// pool.query('select*from news',function(err,result){ //从数据库里边查询出数据
+// 	if(err)throw err;
+// 	// console.log(result);
+// });
 
 module.exports=pool;
