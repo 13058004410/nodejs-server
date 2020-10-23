@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+        <meta name="renderer" content="webkit" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>ajax发请求获取数据库数据在前端页面显示</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>新闻标题</th>
+            </tr>
+            <tbody id="content"></tbody>
+        </table>
+        <button onclick="getData('./luyou/huoqu')">点击我获取数据</button>
+    </body>
+    <script>
+        function getData(a){
+            
+            var xhr=new XMLHttpRequest();
+            var result;
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4&&xhr.status==200){//必须得加这个判断，否则JSON字符串解析会失败
+                    // console.log(444444444);
+                    result=xhr.responseText; //这是一个JSON字符串
+                    // console.log(xhr.responseText);
+                    // console.log(result);
+                    //在页面循环出数据库的数据
+                    var str='';
+                    var result=JSON.parse(result);
+                    // console.log(result);
+                    // console.log(typeof(result));
+                    for(var i=0;i<result.length;i++){                    
+                        // console.log(result[0]);
+                        // console.log(json[0]);
+                        str+=`
+                            <tr>
+                                <td>${result[i].uid}</td>
+                                <td>${result[i].title}</td>
+                            </tr>
+                        `
+                    }
+                    document.getElementById('content').innerHTML=str;
+                }               
+            }
+            xhr.open('get',a,true);
+            xhr.send();
+            
+
+            // document.getElementById('content').innerHTML=str;
+            // console.log(str);
+            
+        }
+        
+    </script>
+</html>
